@@ -6,7 +6,7 @@ CXXFLAGS := -Wall -Wextra -O2 -std=c++17
 
 # Target Binaries
 C_UTILS   := figlet/figlet jayfetch/jayfetch mode/mode todo/todo
-SUBDIR_TARGETS := idek/idek null/null port_scan/port_scan
+SUBDIR_TARGETS := idek/idek null/null port_scan/port_scan jtop/jtop
 
 # All binaries we want to produce
 TARGETS := $(C_UTILS) $(SUBDIR_TARGETS)
@@ -36,6 +36,9 @@ idek/idek:
 null/null:
 	$(MAKE) -C null
 
+jtop/jtop:
+	$(MAKE) -C jtop
+
 port_scan/port_scan:
 	$(MAKE) -C port_scan
 
@@ -45,4 +48,5 @@ clean:
 	rm -f $(C_UTILS)
 	$(MAKE) -C idek clean || rm -f idek/*.o idek/idek
 	$(MAKE) -C null clean || rm -f null/*.o null/null
+	$(MAKE) -C jtop clean || rm -f jtop/*.o jtop/jtop
 	$(MAKE) -C port_scan clean || rm -f port_scan/*.o port_scan/port_scan

@@ -58,7 +58,7 @@ void execute_command(char *command, const char *home, int *commands_happened) {
             "[18] purple           [19] white\n"
             "[20] dev_mode         [21] idek\n"
             "[22] ascii            [23] green\n"
-            "[24] blue             \n"
+            "[24] blue             [25] jtop\n"
             "           \n\n"
         );
     }
@@ -243,5 +243,8 @@ void execute_command(char *command, const char *home, int *commands_happened) {
     }
     else if (strcmp(command, "purple") == 0) {
         system("printf \"\\033[0;35m\"");
+    }
+    else if (strcmp(command, "jtop") == 0) {
+	system("/usr/local/lib/null/src/jtop/jtop");
     }
 }
