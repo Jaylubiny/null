@@ -1,7 +1,8 @@
 #include "null.h"
 
 void execute_command(char *command, const char *home, int *commands_happened) {
-    (void)home; // Explicitly silence the unused parameter warning
+    (void)home;
+
     char path[512];
 
     if (strcmp(command, "quit") == 0) {
@@ -11,7 +12,7 @@ void execute_command(char *command, const char *home, int *commands_happened) {
             fprintf(file, "commands_happened --> %d", *commands_happened);
             fclose(file);
         }
-        stop = 1; // Signal the loop in main to stop
+        stop = 1;
     }
 
     else if (strcmp(command, "cls") == 0) {
@@ -59,7 +60,9 @@ void execute_command(char *command, const char *home, int *commands_happened) {
             "[20] dev_mode         [21] idek\n"
             "[22] ascii            [23] green\n"
             "[24] blue             [25] jtop\n"
-            "           \n\n"
+            "[26] cdu              [27] cdu -a\n"
+	    "[28] cdu pwd          \n"
+	    "\n\n"
         );
     }
 
@@ -246,5 +249,16 @@ void execute_command(char *command, const char *home, int *commands_happened) {
     }
     else if (strcmp(command, "jtop") == 0) {
 	system("/usr/local/lib/null/src/jtop/jtop");
+    }
+    else if (strcmp(command, "cdu") == 0) {
+	system("/usr/local/lib/null/src/cdu/cdu");
+    }
+    else if (strcmp(command, "cdu -a") == 0) {
+	system("/usr/local/lib/null/src/cdu/cdu -a");
+    }
+    else if (strcmp(command, "cdu pwd") == 0) {
+	char command1[512];
+	snprintf(command1, sizeof(command1), "/usr/local/lib/null/src/cdu/cdu %s", global_cwd);
+	system(command1);
     }
 }

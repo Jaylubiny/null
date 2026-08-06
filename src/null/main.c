@@ -119,18 +119,27 @@ int main(void) {
         printf("[%s] %s > ", global_username, global_cwd);
         fflush(stdout);
 
-        if (scanf("%255s", command) != 1) {
-            clearerr(stdin);
+        if (fgets(command, sizeof(command), stdin) == NULL) {
+            break;
+        }
+
+        command[strcspn(command, "\r\n")] = '\0';
+
+        if (command[0] == '\0') {
             continue;
         }
 
         save_command(command, global_username);
-
-        // NULL_H blueprint passes NULL since commands.c ignores it now anyway
         execute_command(command, NULL, &commands_happened);
 
         commands_happened += 1;
     }
+
+
+
+
+
+
 
     // Standard loop termination save
     FILE *file = fopen(achievements_path, "w");

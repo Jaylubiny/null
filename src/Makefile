@@ -6,7 +6,7 @@ CXXFLAGS := -Wall -Wextra -O2 -std=c++17
 
 # Target Binaries
 C_UTILS   := figlet/figlet jayfetch/jayfetch mode/mode todo/todo
-SUBDIR_TARGETS := idek/idek null/null port_scan/port_scan jtop/jtop
+SUBDIR_TARGETS := idek/idek null/null port_scan/port_scan jtop/jtop cdu/cdu
 
 # All binaries we want to produce
 TARGETS := $(C_UTILS) $(SUBDIR_TARGETS)
@@ -41,6 +41,8 @@ jtop/jtop:
 
 port_scan/port_scan:
 	$(MAKE) -C port_scan
+cdu/cdu:
+	$(MAKE) -C cdu
 
 # Clean rule to wipe the slate clean across all directories
 clean:
@@ -50,3 +52,4 @@ clean:
 	$(MAKE) -C null clean || rm -f null/*.o null/null
 	$(MAKE) -C jtop clean || rm -f jtop/*.o jtop/jtop
 	$(MAKE) -C port_scan clean || rm -f port_scan/*.o port_scan/port_scan
+	$(MAKE) -C cdu clean || rm -f cdu/*.o cdu/cdu
