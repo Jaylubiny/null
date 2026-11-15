@@ -1,5 +1,5 @@
 **NULL**
-This is part of the NullOS tool set.
+This is part of the JayOS tool set.
 
 **Instalation**
 The installation process is very simple you just have to execute the install.sh file and it will automatically install null onto your system, with that being said it might not install properly on your system since it is made for the JayOS and not other arch linux distributions. If you would like to do manual install of null you can clone this repository into /usr/local/lib than cd into /usr/local/lib/null/src run "make" and copy the null executable into /usr/local/bin and the installation is done so the manual installation will look like this somehow.
